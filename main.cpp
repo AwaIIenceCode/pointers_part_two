@@ -25,9 +25,10 @@ int main()
         cin >> B[i];
     }
 
-    int* C = new int[M];
+    int* C = new int[M + N]; // Максимальный размер массива C — объединённый размер A и B
     int k = 0;
 
+    // Добавляем элементы из A, которые не входят в B
     for (int i = 0; i < M; i++)
     {
         bool inB = false;
@@ -60,7 +61,40 @@ int main()
         }
     }
 
-    cout << "Array C (elements of A not in B, without duplicates):\n";
+    // Добавляем элементы из B, которые не входят в A
+    for (int i = 0; i < N; i++)
+    {
+        bool inA = false;
+        for (int j = 0; j < M; j++)
+        {
+            if (B[i] == A[j])
+            {
+                inA = true;
+                break;
+            }
+        }
+
+        if (!inA)
+        {
+            bool inC = false;
+            for (int l = 0; l < k; l++)
+            {
+                if (C[l] == B[i])
+                {
+                    inC = true;
+                    break;
+                }
+            }
+
+            if (!inC)
+            {
+                C[k] = B[i];
+                k++;
+            }
+        }
+    }
+
+    cout << "Array C (unique elements of A and B, without duplicates):\n";
     for (int i = 0; i < k; i++)
     {
         cout << C[i] << " ";
