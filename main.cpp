@@ -25,10 +25,9 @@ int main()
         cin >> B[i];
     }
 
-    int* C = new int[M + N]; // Максимальный размер массива C — объединённый размер A и B
+    int* C = new int[M + N];
     int k = 0;
 
-    // Добавляем элементы из A, которые не входят в B
     for (int i = 0; i < M; i++)
     {
         bool inB = false;
@@ -61,7 +60,6 @@ int main()
         }
     }
 
-    // Добавляем элементы из B, которые не входят в A
     for (int i = 0; i < N; i++)
     {
         bool inA = false;
