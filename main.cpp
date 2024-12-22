@@ -1,25 +1,55 @@
 #include <iostream>
 
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-int main() {
-    // TIP Press <shortcut actionId="RenameElement"/> when your caret is at the
-    // <b>lang</b> variable name to see how CLion can help you rename it.
-    auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
+using namespace std;
 
-    for (int i = 1; i <= 5; i++) {
-        // TIP Press <shortcut actionId="Debug"/> to start debugging your code.
-        // We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/>
-        // breakpoint for you, but you can always add more by pressing
-        // <shortcut actionId="ToggleLineBreakpoint"/>.
-        std::cout << "i = " << i << std::endl;
+int main()
+{
+    int M, N;
+
+    cout << "Enter the size of array A (M): ";
+    cin >> M;
+    cout << "Enter the size of array B (N): ";
+    cin >> N;
+
+    int* A = new int[M];
+    int* B = new int[N];
+
+    cout << "Enter elements of array A ->\n";
+
+    for (int i = 0; i < M; i++)
+    {
+        cin >> A[i];
     }
+
+    cout << "Enter elements of array B ->\n";
+
+    for (int i = 0; i < N; i++)
+    {
+        cin >> B[i];
+    }
+
+    int* C = new int[M + N];
+
+    for (int i = 0; i < M; i++)
+    {
+        C[i] = A[i];
+    }
+
+    for (int i = 0; i < N; i++)
+    {
+        C[M + i] = B[i];
+    }
+
+    cout << "Merged array ->\n";
+
+    for (int i = 0; i < M + N; i++)
+    {
+        cout << C[i] << " ";
+    }
+
+    delete[] A;
+    delete[] B;
+    delete[] C;
 
     return 0;
 }
-
-// TIP See CLion help at <a
-// href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>.
-//  Also, you can try interactive lessons for CLion by selecting
-//  'Help | Learn IDE Features' from the main menu.
