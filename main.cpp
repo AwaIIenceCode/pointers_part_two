@@ -3,15 +3,12 @@ using namespace std;
 
 int main()
 {
-    int M, N;
+    int M;
 
     cout << "Enter the size of array A (M): ";
     cin >> M;
-    cout << "Enter the size of array B (N): ";
-    cin >> N;
 
     int* A = new int[M];
-    int* B = new int[N];
 
     cout << "Enter elements of array A:\n";
     for (int i = 0; i < M; i++)
@@ -19,60 +16,23 @@ int main()
         cin >> A[i];
     }
 
-    cout << "Enter elements of array B:\n";
-    for (int i = 0; i < N; i++)
-    {
-        cin >> B[i];
-    }
+    int choice;
 
-    int* C = new int[M + N];
-    int k = 0;
+    cout << "Choose what to remove:\n";
+    cout << "1 - Remove even numbers\n";
+    cout << "2 - Remove odd numbers\n";
+    cin >> choice;
 
+    cout << "Resulting array:\n";
     for (int i = 0; i < M; i++)
     {
-        bool found = false;
-        for (int j = 0; j < k; j++)
+        if ((choice == 1 && A[i] % 2 != 0) || (choice == 2 && A[i] % 2 == 0))
         {
-            if (C[j] == A[i])
-            {
-                found = true;
-                break;
-            }
+            cout << A[i] << " ";
         }
-        if (!found)
-        {
-            C[k] = A[i];
-            k++;
-        }
-    }
-
-    for (int i = 0; i < N; i++)
-    {
-        bool found = false;
-        for (int j = 0; j < k; j++)
-        {
-            if (C[j] == B[i])
-            {
-                found = true;
-                break;
-            }
-        }
-        if (!found)
-        {
-            C[k] = B[i];
-            k++;
-        }
-    }
-
-    cout << "Merged array without duplicates:\n";
-    for (int i = 0; i < k; i++)
-    {
-        cout << C[i] << " ";
     }
 
     delete[] A;
-    delete[] B;
-    delete[] C;
 
     return 0;
 }
