@@ -25,37 +25,46 @@ int main()
         cin >> B[i];
     }
 
-    int* C = new int[M > N ? M : N];
+    int* C = new int[M + N];
     int k = 0;
 
     for (int i = 0; i < M; i++)
     {
-        for (int j = 0; j < N; j++)
+        bool found = false;
+        for (int j = 0; j < k; j++)
         {
-            if (A[i] == B[j])
+            if (C[j] == A[i])
             {
-                bool found = false;
-
-                for (int l = 0; l < k; l++)
-                {
-                    if (C[l] == A[i])
-                    {
-                        found = true;
-                        break;
-                    }
-                }
-
-                if (!found)
-                {
-                    C[k] = A[i];
-                    k++;
-                }
+                found = true;
                 break;
             }
         }
+        if (!found)
+        {
+            C[k] = A[i];
+            k++;
+        }
     }
 
-    cout << "Common elements without duplicates:\n";
+    for (int i = 0; i < N; i++)
+    {
+        bool found = false;
+        for (int j = 0; j < k; j++)
+        {
+            if (C[j] == B[i])
+            {
+                found = true;
+                break;
+            }
+        }
+        if (!found)
+        {
+            C[k] = B[i];
+            k++;
+        }
+    }
+
+    cout << "Merged array without duplicates:\n";
     for (int i = 0; i < k; i++)
     {
         cout << C[i] << " ";
